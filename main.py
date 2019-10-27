@@ -202,7 +202,7 @@ while(logout == False):
             
         if(action == "4"):
 
-            logout == True
+            logout = True
 
         if(action == "5"):
 
