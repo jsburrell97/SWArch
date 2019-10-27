@@ -1,17 +1,17 @@
 from classes import *
 
-cart = Cart()
+cart = Cart() #creating user and cart object
 user = User(cart)
 
 login = False
 
-while(login == False):
+while(login == False): #cycles until user logs out
 
     username = input("\nEnter your username: ")
     password = input("Enter your password: ")
     print("\n")
 
-    if(user.login(username, password)):
+    if(user.login(username, password)): #checks credentials against whats stored in the user's file
 
         login = True
         print("Successful Login!\n")
@@ -25,7 +25,7 @@ print("------------------------------------------------------------")
 logout = False
 while(logout == False):
 
-    print("\n1) View Items")
+    print("\n1) View Items") #prints menu to screen
     print("2) Checkout")
     print("3) View Cart")
     print("4) Logout")
@@ -50,7 +50,7 @@ while(logout == False):
 
             back_to_menu = False
             
-            while(back_to_menu == False):
+            while(back_to_menu == False): #displays item data
                 
                 quantity = file.readline().rstrip()
                 name = file.readline().rstrip()
@@ -72,15 +72,15 @@ while(logout == False):
                     print("Quantity:", int(new_quantity), "\n")
 
                     print("(Next item will be displayed when you finish interacting with this one)\n")
-                    add_item = input("Would you like to add this item to your cart?(y/n): ")
+                    add_item = input("Would you like to add this item to your cart?(y/n): ") #choose to add item
                     
-                    while(add_item != "y" and add_item != "n"):
+                    while(add_item != "y" and add_item != "n"): #input verification
 
                         add_item = input("Please enter (y/n): ")
 
                     if(add_item == "y"):
                             
-                        item_amount = input("How many of this item would you like to add?: ")
+                        item_amount = input("How many of this item would you like to add?: ") #enters the number of items to add to the cart
                         print("\n")    
 
                         while(item_amount.isdigit() != True or int(item_amount) < 0):
@@ -95,7 +95,7 @@ while(logout == False):
                         
                             count = 0
 
-                            for x in range(0, int(item_amount)):
+                            for x in range(0, int(item_amount)): #adds items to cart
 
                                 temp_item = Item()
                                 
@@ -133,10 +133,10 @@ while(logout == False):
                     print("No more items to display!")
                     back_to_menu = True
 
-        if(action == "2"):
+        if(action == "2"): #checks out cart
 
             print("The total comes to $", user.cart.total_price, sep = "")
-            OSC = input("Please enter your OSC Card Number: ")
+            OSC = input("Please enter your OSC Card Number: ") #input OSC number
 
             OSC_check = False
             
@@ -146,9 +146,9 @@ while(logout == False):
 
                     OSC_check = True
 
-            shipping = input("Please enter the shipping address: ")
+            shipping = input("Please enter the shipping address: ") #input shipping address
 
-            confirm = input("Confirm purchase? (y/n): ")
+            confirm = input("Confirm purchase? (y/n): ") #confirm checkout
 
             while(confirm != "y" and confirm != "n"):
 
@@ -156,7 +156,7 @@ while(logout == False):
 
             if(confirm == "y"):
 
-                purchase_record = open(username + "_record.txt", "a")
+                purchase_record = open(username + "_record.txt", "a") #writes purchase data to user's purchase file
                 purchase_record.write("--------------------------PURCHASES---------------------------\n")
                 
                 for x in range(0, len(user.cart.list_of_items)):
@@ -176,7 +176,7 @@ while(logout == False):
                 user.cart.list_of_items.clear()
                    
 
-        if(action == "3"):
+        if(action == "3"): #prints cart to the screen
 
             user.view_cart()
 
@@ -205,11 +205,11 @@ while(logout == False):
 
                 print("Your cart is empty!")
             
-        if(action == "4"):
+        if(action == "4"): #logs out
 
             logout = True
 
-        if(action == "5"):
+        if(action == "5"): #views user's purchase record
 
             view_record = open(username + "_record.txt", "r")
 
