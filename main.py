@@ -43,7 +43,6 @@ while(logout == False):
             description = ""
             price = 0.0
 
-            temp_item = Item()
             item_amount = 0
             end_of_file = False
 
@@ -88,17 +87,23 @@ while(logout == False):
 
                             item_amount = input("Please enter a positive integer: ")
 
+                        while(int(item_amount) > int(new_quantity)):
+
+                            item_amount = input("Item does not have that much in stock! Please enter a valid number of items: ")
+
                         if(int(new_quantity) > 0):
                         
-                            temp_item.name = name
-                            temp_item.category = category
-                            temp_item.description = description
-                            temp_item.price = float(price)
-
                             count = 0
 
                             for x in range(0, int(item_amount)):
 
+                                temp_item = Item()
+                                
+                                temp_item.name = name
+                                temp_item.category = category
+                                temp_item.description = description
+                                temp_item.price = float(price)
+                                
                                 user.cart.total_price += float(price)
                                 user.cart.list_of_items.append(temp_item)
 
