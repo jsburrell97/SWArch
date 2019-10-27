@@ -36,7 +36,7 @@ while(logout == False):
 
     if(action == "1" or action == "2" or action == "3" or action == "4" or action == "5"):
 
-        if(action == "1"):
+        if(action == "1"): #only works when action is 1
             
             name = ""
             category = ""
