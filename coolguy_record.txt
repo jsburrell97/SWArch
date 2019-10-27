@@ -1,0 +1,50 @@
+--------------------------PURCHASE---------------------------
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Total: $39.96
+OSC:1111111111
+Shipping Address: big blue house
+
+--------------------------PURCHASE---------------------------
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Name: Toothpaste
+Category: Household
+Description: Goo to clean your chompers!
+Price: $9.99
+
+Total: $39.96
+OSC:1111111111
+Shipping Address: big blue house
+

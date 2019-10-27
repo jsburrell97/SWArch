@@ -1,0 +1,25 @@
+Toothpaste Quantity 46
+Toothpaste
+Household
+Goo to clean your chompers!
+9.99
+GameMan Quantity 50
+GameMan
+Electronic
+Game console.
+299.99
+Batmobile Quantity 80
+Batmobile
+Toys
+He beats up bad dudes!
+11.95
+Harold's Pottery Quantity 250
+Harold's Pottery
+Books
+Magic!
+29.99
+Zip Master Quantity 170
+Zip Master
+Toys
+Made of zippers!
+12.99
