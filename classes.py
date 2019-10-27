@@ -22,7 +22,7 @@ class User:
 
         self.cart = cart
 
-    def login(self, username, password):
+    def login(self, username, password): #checks the users password and username from a .txt file
 
         user_file = username + ".txt"
         file = open(user_file, "r")
@@ -30,13 +30,13 @@ class User:
         checkpass = file.readline().rstrip()
         file.close();
 
-        if(checkuser == username and checkpass == password):
+        if(checkuser == username and checkpass == password): #if both the username and password are true
 
             return True
 
     def view_cart(self):
 
-        for x in range(0, len(self.cart.list_of_items)):
+        for x in range(0, len(self.cart.list_of_items)): 
 
             print("----------Item ", x + 1, "----------", sep = "")
 
