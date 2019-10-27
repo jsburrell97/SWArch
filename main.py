@@ -23,7 +23,7 @@ while(login == False): #cycles until user logs out
 print("------------------------------------------------------------")
 
 logout = False
-while(logout == False):
+while(logout == False): #checks if you have logged out
 
     print("\n1) View Items") #prints menu to screen
     print("2) Checkout")
@@ -36,7 +36,7 @@ while(logout == False):
 
     if(action == "1" or action == "2" or action == "3" or action == "4" or action == "5"):
 
-        if(action == "1"): #only works when action is 1
+        if(action == "1"): #shows items
             
             name = ""
             category = ""
@@ -67,7 +67,7 @@ while(logout == False):
                     print("Description:", description)
                     print("Price: $", price, sep = "")
                         
-                    new_quantity = new_quantity[len(new_quantity) - 1]
+                    new_quantity = new_quantity[len(new_quantity) - 1] 
 
                     print("Quantity:", int(new_quantity), "\n")
 
