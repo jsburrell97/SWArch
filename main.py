@@ -7,11 +7,11 @@ login = False
 
 while(login == False):
 
-    username = input("\nEnter your username: ")
+    username = input("\nEnter your username: ") #checks login credentials
     password = input("Enter your password: ")
     print("\n")
 
-    try:
+    try: #catch login error
         
         if(user.login(username, password)):
 
@@ -27,7 +27,7 @@ print("------------------------------------------------------------")
 logout = False
 while(logout == False):
 
-    print("\n1) View Items")
+    print("\n1) View Items") #display menu
     print("2) Checkout")
     print("3) View Cart")
     print("4) Logout")
@@ -38,7 +38,7 @@ while(logout == False):
 
     if(action == "1" or action == "2" or action == "3" or action == "4" or action == "5"):
 
-        if(action == "1"):
+        if(action == "1"): #displays items to screen
             
             name = ""
             category = ""
@@ -52,9 +52,9 @@ while(logout == False):
 
             back_to_menu = False
             
-            while(back_to_menu == False):
+            while(back_to_menu == False): 
                 
-                quantity = file.readline().rstrip()
+                quantity = file.readline().rstrip() #reads data from items.txt
                 name = file.readline().rstrip()
                 category = file.readline().rstrip()
                 description = file.readline().rstrip()
@@ -74,7 +74,7 @@ while(logout == False):
                     print("Quantity:", int(new_quantity), "\n")
 
                     print("(Next item will be displayed when you finish interacting with this one)\n")
-                    add_item = input("Would you like to add this item to your cart?(y/n): ")
+                    add_item = input("Would you like to add this item to your cart?(y/n): ")#choice to add item to cart
                     
                     while(add_item != "y" and add_item != "n"):
 
@@ -82,14 +82,14 @@ while(logout == False):
 
                     if(add_item == "y"):
                             
-                        item_amount = input("How many of this item would you like to add?: ")
+                        item_amount = input("How many of this item would you like to add?: ") #amount to add to cart
                         print("\n")    
 
                         while(item_amount.isdigit() != True or int(item_amount) < 0):
 
                             item_amount = input("Please enter a positive integer: ")
 
-                        while(int(item_amount) > int(new_quantity)):
+                        while(int(item_amount) > int(new_quantity)): #catches
 
                             item_amount = input("Item does not have that much in stock! Please enter a valid number of items: ")
 
@@ -107,7 +107,7 @@ while(logout == False):
                                 temp_item.price = float(price)
                                 
                                 user.cart.total_price += float(price)
-                                user.cart.list_of_items.append(temp_item)
+                                user.cart.list_of_items.append(temp_item) #adds item to cart
 
                                 new_quantity = quantity.split()
                                 new_quantity_numbers = new_quantity[len(new_quantity) - 1]
@@ -122,7 +122,7 @@ while(logout == False):
                                 filedata = filedata.replace(quantity, new_quantity)
 
                                 write_file = open("items.txt", "w")
-                                write_file.write(filedata)
+                                write_file.write(filedata) #updates items.txt
                                 write_file.close()
 
                                 count += 1
@@ -135,10 +135,10 @@ while(logout == False):
                     print("Select 'View Items' in the menu to see the items again!")
                     back_to_menu = True
 
-        if(action == "2"):
+        if(action == "2"): #checks out
 
             print("The total comes to $", user.cart.total_price, sep = "")
-            OSC = input("Please enter your OSC Card Number: ")
+            OSC = input("Please enter your OSC Card Number: ") #enter OSC number
 
             OSC_check = False
             
@@ -148,9 +148,9 @@ while(logout == False):
 
                     OSC_check = True
 
-            shipping = input("Please enter the shipping address: ")
+            shipping = input("Please enter the shipping address: ") #enter shipping number
 
-            confirm = input("Confirm purchase? (y/n): ")
+            confirm = input("Confirm purchase? (y/n): ") #confirm purchase
 
             while(confirm != "y" and confirm != "n"):
 
@@ -161,7 +161,7 @@ while(logout == False):
                 purchase_record = open(username + "_record.txt", "a")
                 purchase_record.write("--------------------------PURCHASES---------------------------\n")
                 
-                for x in range(0, len(user.cart.list_of_items)):
+                for x in range(0, len(user.cart.list_of_items)): #appends data to user's purchase file
 
                     purchase_record.write("Name: " + user.cart.list_of_items[x].name + "\n")
                     purchase_record.write("Category: " + user.cart.list_of_items[x].category + "\n")
@@ -178,13 +178,13 @@ while(logout == False):
                 user.cart.list_of_items.clear()
                    
 
-        if(action == "3"):
+        if(action == "3"): #views cart
 
             user.view_cart()
 
             if(len(user.cart.list_of_items) > 0):
                 
-                remove_item = input("Would you like to remove an item from your cart(y/n):")
+                remove_item = input("Would you like to remove an item from your cart(y/n):") #choice to remove item from cart
 
                 while(remove_item != "y" and remove_item != "n"):
 
@@ -192,14 +192,14 @@ while(logout == False):
 
                 if(remove_item == "y"):
                     
-                    item_removed = input("Enter the position in the cart of the item you want to remove (Ex. 1 = first item): ")
+                    item_removed = input("Enter the position in the cart of the item you want to remove (Ex. 1 = first item): ")#index of item to remove
 
                     while(int(item_removed) < 0 and int(item_removed) > len(user.cart.list_of_items)):
 
                         cart_capacity = len(user.cart.list_of_items)
                         item_removed = input("Please enter a valid number(1 - ", cart_capacity, "): ", sep = "")      
 
-                    user.cart.total_price -= user.cart.list_of_items[int(item_removed) - 1].price
+                    user.cart.total_price -= user.cart.list_of_items[int(item_removed) - 1].price #updates total price of cart
                     add_back = user.cart.list_of_items.pop(int(item_removed) - 1)
                     
                     add_back_to_inventory = open("items.txt", "r")
@@ -227,7 +227,7 @@ while(logout == False):
                                 filedata[x].insert(3, " ")
                             
                         temp_string = ''.join(filedata[x]) + "\n"                        
-                        write_file.write(temp_string)
+                        write_file.write(temp_string) #updates inventory
 
                     write_file.close()                   
                     
@@ -239,9 +239,9 @@ while(logout == False):
             
         if(action == "4"):
 
-            logout = True
+            logout = True #tells program to log out
 
-        if(action == "5"):
+        if(action == "5"): #prints purchase record to screen
 
             view_record = open(username + "_record.txt", "r")
 
