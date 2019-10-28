@@ -11,14 +11,16 @@ while(login == False):
     password = input("Enter your password: ")
     print("\n")
 
-    if(user.login(username, password)):
+    try:
+        
+        if(user.login(username, password)):
 
-        login = True
-        print("Successful Login!\n")
+            login = True
+            print("Successful Login!\n")
 
-    else:
+    except FileNotFoundError:
 
-        print("Login Failed!\n")
+        print("Login Failed\n")
 
 print("------------------------------------------------------------")
 
@@ -199,7 +201,6 @@ while(logout == False):
 
                     user.cart.total_price -= user.cart.list_of_items[int(item_removed) - 1].price
                     add_back = user.cart.list_of_items.pop(int(item_removed) - 1)
-                    print(add_back.name)
                     
                     add_back_to_inventory = open("items.txt", "r")
                     filedata = add_back_to_inventory.read()
